@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_all"
+            android:icon="@drawable/ic_menu_lista"
+            android:title="@string/menu_all_visitors" />
+        <item
+            android:id="@+id/nav_authorized"
+            android:icon="@drawable/ic_menu_authorized"
+            android:title="@string/menu_authorized_visitors" />
+        <item
+            android:id="@+id/nav_blocked"
+            android:icon="@drawable/ic_menu_blocked"
+            android:title="@string/menu_blocked_visitors" />
+    </group>
+</menu>
