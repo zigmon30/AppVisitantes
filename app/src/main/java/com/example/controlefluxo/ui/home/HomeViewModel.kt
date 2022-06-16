@@ -1,13 +1,13 @@
-package com.example.visitantes.ui.home
+package com.example.controlefluxo.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class AllVisitorsViewModel : ViewModel() {
+class HomeViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "Todos"
+        value = "This is home Fragment"
     }
     val text: LiveData<String> = _text
 }

@@ -1,4 +1,4 @@
-package com.example.visitantes.ui.home
+package com.example.controlefluxo.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.visitantes.databinding.FragmentHomeBinding
+import com.example.controlefluxo.databinding.FragmentHomeBinding
 
-class VisitorsAllFragment : Fragment() {
+class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -22,14 +22,14 @@ class VisitorsAllFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val allVisitorsViewModel =
-            ViewModelProvider(this).get(AllVisitorsViewModel::class.java)
+        val homeViewModel =
+            ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textHome
-        allVisitorsViewModel.text.observe(viewLifecycleOwner) {
+        homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root

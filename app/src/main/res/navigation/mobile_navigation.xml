@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_all">
+    app:startDestination="@+id/nav_home">
 
     <fragment
-        android:id="@+id/nav_all"
-        android:name="com.example.visitantes.view.VisitorsAllFragment"
-        android:label="@string/menu_all_visitors"
+        android:id="@+id/nav_home"
+        android:name="com.example.controlefluxo.ui.home.HomeFragment"
+        android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_authorized"
-        android:name="com.example.visitantes.view.AuthorizedFragment"
-        android:label="@string/menu_authorized_visitors"
+        android:id="@+id/nav_gallery"
+        android:name="com.example.controlefluxo.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_blocked"
-        android:name="com.example.visitantes.view.BlockedFragment"
-        android:label="@string/menu_blocked_visitors"
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.controlefluxo.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>

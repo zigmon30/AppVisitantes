@@ -1,13 +1,13 @@
-package com.example.visitantes.ui.gallery
+package com.example.controlefluxo.ui.gallery
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class AuthorizedViewModel : ViewModel() {
+class GalleryViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "Autorizados"
+        value = "This is gallery Fragment"
     }
     val text: LiveData<String> = _text
 }
