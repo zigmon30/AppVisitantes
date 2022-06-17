@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.controlefluxo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    hhh
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
