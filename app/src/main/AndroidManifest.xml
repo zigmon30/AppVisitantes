@@ -14,6 +14,9 @@
         android:theme="@style/Theme.ControleFluxo"
         tools:targetApi="31">
         <activity
+            android:name=".PessoaFormularioActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
