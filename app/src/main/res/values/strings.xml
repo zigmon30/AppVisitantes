@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Controle de Fluxo Portaria Todos</string>
-    <string name="menu_gallery">Autorizados a Entrada</string>
-    <string name="menu_slideshow">Bloqueados a Verificar Situação</string>
+    <string name="menu_pessoa_todos">Pessoas Todos</string>
+    <string name="menu_autorizados">Autorizados a Entrada</string>
+    <string name="menu_bloqueados">Bloqueados a Verificar Situação</string>
 </resources>

@@ -7,14 +7,14 @@
         <item
             android:id="@+id/nav_todas_pessoas"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Cadastrados" />
+            android:title="@string/menu_pessoa_todos" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_autorizados"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Autorizados" />
+            android:title="@string/menu_autorizados" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_bloqueados"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Bloqueados com Restrições" />
+            android:title="@string/menu_bloqueados" />
     </group>
 </menu>

@@ -1,4 +1,4 @@
-package com.example.controlefluxo.ui.slideshow
+package com.example.controlefluxo.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.controlefluxo.databinding.FragmentSlideshowBinding
+import com.example.controlefluxo.databinding.FragmentAutorizadoBinding
 
-class SlideshowFragment : Fragment() {
 
-    private var _binding: FragmentSlideshowBinding? = null
+class AutorizadoFragment : Fragment() {
+
+    private var _binding: FragmentAutorizadoBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,14 +23,14 @@ class SlideshowFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val slideshowViewModel =
-            ViewModelProvider(this).get(SlideshowViewModel::class.java)
+        val viewModel =
+            ViewModelProvider(this).get(AutorizadoViewModel::class.java)
 
-        _binding = FragmentSlideshowBinding.inflate(inflater, container, false)
+        _binding = FragmentAutorizadoBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textSlideshow
-        slideshowViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.textGallery
+        viewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root

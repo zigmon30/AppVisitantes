@@ -1,4 +1,4 @@
-package com.example.controlefluxo.ui.home
+package com.example.controlefluxo.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

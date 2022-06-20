@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_todas_pessoas"
-        android:name="com.example.controlefluxo.ui.home.TodasPessoasFragment"
-        android:label="@string/menu_home"
+        android:name="com.example.controlefluxo.ui.TodasPessoasFragment"
+        android:label="@string/menu_pessoa_todos"
         tools:layout="@layout/fragment_todas_pessoas" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.controlefluxo.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_autorizados"
+        android:name="com.example.controlefluxo.ui.AutorizadoFragment"
+        android:label="@string/menu_autorizados"
+        tools:layout="@layout/fragment_autorizado" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.controlefluxo.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_bloqueados"
+        android:name="com.example.controlefluxo.ui.BloqueadoFragment"
+        android:label="@string/menu_bloqueados"
+        tools:layout="@layout/fragment_bloqueado" />
 </navigation>
