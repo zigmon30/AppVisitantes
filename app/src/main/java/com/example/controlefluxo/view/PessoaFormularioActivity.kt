@@ -6,6 +6,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.example.controlefluxo.R
 import com.example.controlefluxo.databinding.ActivityPessoaFormularioBinding
+import com.example.controlefluxo.model.PessoaModel
 import com.example.controlefluxo.viewmodel.PessoaFormularioViewModel
 
 class PessoaFormularioActivity : AppCompatActivity(), View.OnClickListener {
@@ -27,6 +28,11 @@ class PessoaFormularioActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         if (v.id == R.id.botao_salvar) {
+            val nome = binding.editNome.text.toString()
+            val situacao = binding.radioAutorizado.isChecked
+
+            val model = PessoaModel(0, nome, situacao)
+            viewModel.inserir(model)
 
         }
     }
