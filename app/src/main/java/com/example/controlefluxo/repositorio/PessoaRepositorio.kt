@@ -2,6 +2,8 @@ package com.example.controlefluxo.repositorio
 
 class PessoaRepositorio private constructor(){
 
+    
+
     //padrão singleton
     companion object {
         private lateinit var repositorio: PessoaRepositorio
@@ -13,5 +15,10 @@ class PessoaRepositorio private constructor(){
             return repositorio
 
         }
+
+    }
+
+    fun salvar() {
+
     }
 }
