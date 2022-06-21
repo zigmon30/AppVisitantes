@@ -2,6 +2,7 @@ package com.example.controlefluxo.repositorio
 
 import android.content.ContentValues
 import android.content.Context
+import com.example.controlefluxo.constants.DataBaseConstants
 import com.example.controlefluxo.model.PessoaModel
 
 class PessoaRepositorio private constructor(context: Context){
@@ -25,14 +26,13 @@ class PessoaRepositorio private constructor(context: Context){
     fun inserir(pessoa: PessoaModel): Boolean {
         return try {
             val db = pessoaDataBase.writableDatabase
-
             val situacao = if (pessoa.situacao) 1 else 0
 
             val values = ContentValues()
-            values.put("nome", pessoa.nome)
-            values.put("situacao", situacao)
+            values.put(DataBaseConstants.PESSOA.COLUNAS.NOME, pessoa.nome)
+            values.put(DataBaseConstants.PESSOA.COLUNAS.SITUACAO, situacao)
 
-            db.insert("Pessoa", null, values)
+            db.insert(DataBaseConstants.PESSOA.TABELA_NOME, null, values)
             true
 
         } catch (e: Exception) {
