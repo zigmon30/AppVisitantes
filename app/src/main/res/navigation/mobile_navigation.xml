@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_todas_pessoas"
-        android:name="com.example.controlefluxo.ui.TodasPessoasFragment"
+        android:name="com.example.controlefluxo.view.TodasPessoasFragment"
         android:label="@string/menu_pessoa_todos"
         tools:layout="@layout/fragment_todas_pessoas" />
 
     <fragment
         android:id="@+id/nav_autorizados"
-        android:name="com.example.controlefluxo.ui.AutorizadoFragment"
+        android:name="com.example.controlefluxo.view.AutorizadoFragment"
         android:label="@string/menu_autorizados"
         tools:layout="@layout/fragment_autorizado" />
 
     <fragment
         android:id="@+id/nav_bloqueados"
-        android:name="com.example.controlefluxo.ui.BloqueadoFragment"
+        android:name="com.example.controlefluxo.view.BloqueadoFragment"
         android:label="@string/menu_bloqueados"
         tools:layout="@layout/fragment_bloqueado" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.example.controlefluxo.ui
+package com.example.controlefluxo.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.controlefluxo.databinding.FragmentAutorizadoBinding
+import com.example.controlefluxo.databinding.FragmentBloqueadoBinding
+import com.example.controlefluxo.viewmodel.BloqueadoViewModel
 
 
-class AutorizadoFragment : Fragment() {
+class BloqueadoFragment : Fragment() {
 
-    private var _binding: FragmentAutorizadoBinding? = null
+    private var _binding: FragmentBloqueadoBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,12 +25,12 @@ class AutorizadoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val viewModel =
-            ViewModelProvider(this).get(AutorizadoViewModel::class.java)
+            ViewModelProvider(this).get(BloqueadoViewModel::class.java)
 
-        _binding = FragmentAutorizadoBinding.inflate(inflater, container, false)
+        _binding = FragmentBloqueadoBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textGallery
+        val textView: TextView = binding.textSlideshow
         viewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }

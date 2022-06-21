@@ -1,4 +1,4 @@
-package com.example.controlefluxo.ui
+package com.example.controlefluxo.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

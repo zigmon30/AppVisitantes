@@ -1,13 +1,13 @@
-package com.example.controlefluxo.ui
+package com.example.controlefluxo.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class TodasPessoasViewModel : ViewModel() {
+class AutorizadoViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "Essa é uma Fragmente de Todas as pessoas"
+        value = "This is gallery Fragment"
     }
     val text: LiveData<String> = _text
 }

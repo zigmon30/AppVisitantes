@@ -1,17 +1,12 @@
-package com.example.controlefluxo
+package com.example.controlefluxo.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.View.inflate
-import androidx.appcompat.resources.Compatibility.Api21Impl.inflate
-import androidx.core.content.res.ComplexColorCompat.inflate
-import androidx.core.graphics.drawable.DrawableCompat.inflate
 import androidx.lifecycle.ViewModelProvider
-import com.example.controlefluxo.databinding.ActivityMainBinding.inflate
+import com.example.controlefluxo.R
 import com.example.controlefluxo.databinding.ActivityPessoaFormularioBinding
-import com.example.controlefluxo.databinding.ActivityPessoaFormularioBinding.inflate
-import com.example.controlefluxo.databinding.FragmentBloqueadoBinding
+import com.example.controlefluxo.viewmodel.PessoaFormularioViewModel
 
 class PessoaFormularioActivity : AppCompatActivity(), View.OnClickListener {
 

@@ -14,10 +14,10 @@
         android:theme="@style/Theme.ControleFluxo"
         tools:targetApi="31">
         <activity
-            android:name=".PessoaFormularioActivity"
+            android:name=".view.PessoaFormularioActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.ControleFluxo.NoActionBar">
