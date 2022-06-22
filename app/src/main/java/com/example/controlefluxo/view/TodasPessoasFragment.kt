@@ -8,7 +8,10 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.controlefluxo.databinding.FragmentTodasPessoasBinding
+import com.example.controlefluxo.view.adapter.PessoasAdapter
 import com.example.controlefluxo.viewmodel.PessoaFormularioViewModel
 import com.example.controlefluxo.viewmodel.TodasPessoasViewModel
 
@@ -17,22 +20,24 @@ class TodasPessoasFragment : Fragment() {
     private var _binding: FragmentTodasPessoasBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: TodasPessoasViewModel
+    private val adapter = PessoasAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, b: Bundle?): View {
+
         viewModel = ViewModelProvider(this).get(TodasPessoasViewModel::class.java)
-
         _binding = FragmentTodasPessoasBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+
+        //layout
+        binding.recyclePessoasTodas.layoutManager = LinearLayoutManager(context)
+
+        //adapter
+        binding.recyclePessoasTodas.adapter = adapter
 
         viewModel.getAll()
 
         observe()
 
-        return root
+        return binding.root
     }
 
     override fun onDestroyView() {
@@ -42,6 +47,7 @@ class TodasPessoasFragment : Fragment() {
 
     private fun observe() {
         viewModel.pessoas.observe(viewLifecycleOwner) {
+            adapter.atualizarPessoas(it)
 
         }
 
