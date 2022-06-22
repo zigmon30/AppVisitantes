@@ -80,13 +80,13 @@ class PessoaRepositorio private constructor(context: Context) {
 
     }
 
-    fun exibirTodos(): List<PessoaModel> {
+    fun exibirTodasPessoas(): List<PessoaModel> {
 
         val list = mutableListOf<PessoaModel>()
         try {
             val db = pessoaDataBase.readableDatabase
 
-            val selecionar = arrayOf(
+            val projetar = arrayOf(
                 DataBaseConstants.PESSOA.COLUNAS.ID,
                 DataBaseConstants.PESSOA.COLUNAS.NOME,
                 DataBaseConstants.PESSOA.COLUNAS.SITUACAO
@@ -94,13 +94,77 @@ class PessoaRepositorio private constructor(context: Context) {
 
             val cursor = db.query(
                 DataBaseConstants.PESSOA.TABELA_NOME,
-                selecionar,
+                projetar,
                 null,
                 null,
                 null,
                 null,
                 null
             )
+
+            if (cursor != null && cursor.count > 0) {
+                while (cursor.moveToNext()) {
+                    val id =
+                        cursor.getInt(cursor.getColumnIndex(DataBaseConstants.PESSOA.COLUNAS.ID))
+                    val nome =
+                        cursor.getString(cursor.getColumnIndex(DataBaseConstants.PESSOA.COLUNAS.NOME))
+                    val situacao =
+                        cursor.getInt(cursor.getColumnIndex(DataBaseConstants.PESSOA.COLUNAS.SITUACAO))
+
+                    list.add(PessoaModel(id, nome, situacao == 1))
+                }
+            }
+
+            cursor.close()
+
+        } catch (e: Exception) {
+            return list
+        }
+        return list
+
+
+    }
+
+    fun exibirPessoasLiberadas(): List<PessoaModel> {
+
+        val list = mutableListOf<PessoaModel>()
+        try {
+            val db = pessoaDataBase.readableDatabase
+
+
+            val cursor = db.rawQuery("select id, nome, situacao from Pessoa where situacao = 1", null)
+
+            if (cursor != null && cursor.count > 0) {
+                while (cursor.moveToNext()) {
+                    val id =
+                        cursor.getInt(cursor.getColumnIndex(DataBaseConstants.PESSOA.COLUNAS.ID))
+                    val nome =
+                        cursor.getString(cursor.getColumnIndex(DataBaseConstants.PESSOA.COLUNAS.NOME))
+                    val situacao =
+                        cursor.getInt(cursor.getColumnIndex(DataBaseConstants.PESSOA.COLUNAS.SITUACAO))
+
+                    list.add(PessoaModel(id, nome, situacao == 1))
+                }
+            }
+
+            cursor.close()
+
+        } catch (e: Exception) {
+            return list
+        }
+        return list
+
+
+    }
+
+    fun exibirPessoasBloqueadas(): List<PessoaModel> {
+
+        val list = mutableListOf<PessoaModel>()
+        try {
+            val db = pessoaDataBase.readableDatabase
+
+
+            val cursor = db.rawQuery("select id, nome, situacao from Pessoa where situacao = 0", null)
 
             if (cursor != null && cursor.count > 0) {
                 while (cursor.moveToNext()) {
