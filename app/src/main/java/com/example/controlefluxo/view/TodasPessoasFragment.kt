@@ -6,38 +6,44 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.controlefluxo.databinding.FragmentTodasPessoasBinding
+import com.example.controlefluxo.viewmodel.PessoaFormularioViewModel
 import com.example.controlefluxo.viewmodel.TodasPessoasViewModel
 
 class TodasPessoasFragment : Fragment() {
 
     private var _binding: FragmentTodasPessoasBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var viewModel: TodasPessoasViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val ViewModel =
-            ViewModelProvider(this).get(TodasPessoasViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(TodasPessoasViewModel::class.java)
 
         _binding = FragmentTodasPessoasBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        ViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        viewModel.getAll()
+
+        observe()
+
         return root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun observe() {
+        viewModel.pessoas.observe(viewLifecycleOwner) {
+
+        }
+
     }
 }
