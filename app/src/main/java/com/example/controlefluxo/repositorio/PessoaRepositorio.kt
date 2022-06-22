@@ -5,7 +5,7 @@ import android.content.Context
 import com.example.controlefluxo.constants.DataBaseConstants
 import com.example.controlefluxo.model.PessoaModel
 
-class PessoaRepositorio private constructor(context: Context){
+class PessoaRepositorio private constructor(context: Context) {
 
     private val pessoaDataBase = PessoaDataBase(context)
 
@@ -14,7 +14,7 @@ class PessoaRepositorio private constructor(context: Context){
         private lateinit var repositorio: PessoaRepositorio
 
         fun getInstance(context: Context): PessoaRepositorio {
-            if (!Companion::repositorio.isInitialized){
+            if (!Companion::repositorio.isInitialized) {
                 repositorio = PessoaRepositorio(context)
             }
             return repositorio
@@ -77,6 +77,51 @@ class PessoaRepositorio private constructor(context: Context){
             false
 
         }
+
+    }
+
+    fun exibirTodos(): List<PessoaModel> {
+
+        val list = mutableListOf<PessoaModel>()
+        try {
+            val db = pessoaDataBase.readableDatabase
+
+            val selecionar = arrayOf(
+                DataBaseConstants.PESSOA.COLUNAS.ID,
+                DataBaseConstants.PESSOA.COLUNAS.NOME,
+                DataBaseConstants.PESSOA.COLUNAS.SITUACAO
+            )
+
+            val cursor = db.query(
+                DataBaseConstants.PESSOA.TABELA_NOME,
+                selecionar,
+                null,
+                null,
+                null,
+                null,
+                null
+            )
+
+            if (cursor != null && cursor.count > 0) {
+                while (cursor.moveToNext()) {
+                    val id =
+                        cursor.getInt(cursor.getColumnIndex(DataBaseConstants.PESSOA.COLUNAS.ID))
+                    val nome =
+                        cursor.getString(cursor.getColumnIndex(DataBaseConstants.PESSOA.COLUNAS.NOME))
+                    val situacao =
+                        cursor.getInt(cursor.getColumnIndex(DataBaseConstants.PESSOA.COLUNAS.SITUACAO))
+
+                    list.add(PessoaModel(id, nome, situacao == 1))
+                }
+            }
+
+            cursor.close()
+
+        } catch (e: Exception) {
+            return list
+        }
+        return list
+
 
     }
 }
