@@ -42,7 +42,41 @@ class PessoaRepositorio private constructor(context: Context){
 
     }
 
-    fun atualizar() {
+    fun atualizar(pessoa: PessoaModel): Boolean {
+        return try {
+            val db = pessoaDataBase.writableDatabase
+            val situacao = if (pessoa.situacao) 1 else 0
+
+            val values = ContentValues()
+            values.put(DataBaseConstants.PESSOA.COLUNAS.SITUACAO, situacao)
+            values.put(DataBaseConstants.PESSOA.COLUNAS.NOME, pessoa.nome)
+
+            val selection = DataBaseConstants.PESSOA.COLUNAS.ID + " = ?"
+            val args = arrayOf(pessoa.id.toString())
+
+            db.update(DataBaseConstants.PESSOA.TABELA_NOME, values, selection, args)
+            true
+        } catch (e: Exception) {
+            false
+
+        }
+
+    }
+
+    fun deletar(id: Int): Boolean {
+        return try {
+            val db = pessoaDataBase.writableDatabase
+
+
+            val selection = DataBaseConstants.PESSOA.COLUNAS.ID + " = ?"
+            val args = arrayOf(id.toString())
+
+            db.delete(DataBaseConstants.PESSOA.TABELA_NOME, selection, args)
+            true
+        } catch (e: Exception) {
+            false
+
+        }
 
     }
 }
