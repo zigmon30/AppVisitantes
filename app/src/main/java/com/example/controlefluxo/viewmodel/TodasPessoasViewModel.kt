@@ -20,4 +20,8 @@ class TodasPessoasViewModel(application: Application) : AndroidViewModel(applica
         listaPessoasTodas.value = repositorio.exibirTodasPessoas()
 
     }
+
+    fun deletar(id: Int) {
+        repositorio.deletar(id)
+    }
 }
