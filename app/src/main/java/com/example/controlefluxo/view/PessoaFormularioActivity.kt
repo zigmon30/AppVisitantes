@@ -3,6 +3,7 @@ package com.example.controlefluxo.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.controlefluxo.R
@@ -56,6 +57,14 @@ class PessoaFormularioActivity : AppCompatActivity(), View.OnClickListener {
             } else {
                 binding.radioBloqueado.isChecked = true
             }
+        })
+
+        viewModel.salvarPessoa.observe(this, Observer {
+           if (it != "") {
+               Toast.makeText(applicationContext, it, Toast.LENGTH_SHORT).show()
+
+               finish()
+           }
         })
     }
 

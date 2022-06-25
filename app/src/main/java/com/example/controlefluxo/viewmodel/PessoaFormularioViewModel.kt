@@ -14,11 +14,22 @@ class PessoaFormularioViewModel(application: Application) : AndroidViewModel(app
     private val pessoaModel = MutableLiveData<PessoaModel>()
     val pessoa: LiveData<PessoaModel> = pessoaModel
 
+    private val _salvarPessoa = MutableLiveData<String>()
+    val salvarPessoa: LiveData<String> = _salvarPessoa
+
     fun salvar(pessoa: PessoaModel) {
         if (pessoa.id == 0) {
-            repositorio.inserir(pessoa)
-    } else {
-            repositorio.atualizar(pessoa)
+            if (repositorio.inserir(pessoa)) {
+                _salvarPessoa.value = "ISERIDO PESSOA COM SUCESSO"
+            } else {
+                _salvarPessoa.value = "FALHA"
+            }
+        } else {
+            if (repositorio.atualizar(pessoa)) {
+                _salvarPessoa.value = "ATUALIZADO PESSOA COM SUCESSO"
+            } else {
+                _salvarPessoa.value = "FALHA"
+            }
         }
     }
 
