@@ -80,6 +80,52 @@ class PessoaRepositorio private constructor(context: Context) {
 
     }
 
+    fun get(id: Int): PessoaModel? {
+
+        var pessoa : PessoaModel? = null
+        try {
+            val db = pessoaDataBase.readableDatabase
+
+            val projetar = arrayOf(
+                DataBaseConstants.PESSOA.COLUNAS.ID,
+                DataBaseConstants.PESSOA.COLUNAS.NOME,
+                DataBaseConstants.PESSOA.COLUNAS.SITUACAO
+            )
+
+            val selection = DataBaseConstants.PESSOA.COLUNAS.ID + " = ?"
+            val args = arrayOf(id.toString())
+
+            val cursor = db.query(
+                DataBaseConstants.PESSOA.TABELA_NOME,
+                projetar,
+                selection,
+                args,
+                null,
+                null,
+                null
+            )
+
+            if (cursor != null && cursor.count > 0) {
+                while (cursor.moveToNext()) {
+                    val nome =
+                        cursor.getString(cursor.getColumnIndex(DataBaseConstants.PESSOA.COLUNAS.NOME))
+                    val situacao =
+                        cursor.getInt(cursor.getColumnIndex(DataBaseConstants.PESSOA.COLUNAS.SITUACAO))
+
+                    pessoa = PessoaModel(id, nome, situacao == 1)
+                }
+            }
+
+            cursor.close()
+
+        } catch (e: Exception) {
+            return pessoa
+        }
+        return pessoa
+
+
+    }
+
     fun exibirTodasPessoas(): List<PessoaModel> {
 
         val list = mutableListOf<PessoaModel>()

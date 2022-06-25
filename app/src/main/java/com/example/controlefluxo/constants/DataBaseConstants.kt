@@ -3,6 +3,7 @@ package com.example.controlefluxo.constants
 class DataBaseConstants private constructor(){
 
     object PESSOA {
+        const val ID = "pessoaid"
         const val TABELA_NOME = "Pessoa"
 
         object COLUNAS {
