@@ -41,7 +41,12 @@ class PessoaFormularioActivity : AppCompatActivity(), View.OnClickListener {
             val nome = binding.editNome.text.toString()
             val situacao = binding.radioAutorizado.isChecked
 
-            val model = PessoaModel(pessoaId, nome, situacao)
+            val model = PessoaModel().apply {
+                this.id = pessoaId
+                this.nome = nome
+                this.situacao = situacao
+
+            }
             viewModel.salvar(model)
             finish()
 

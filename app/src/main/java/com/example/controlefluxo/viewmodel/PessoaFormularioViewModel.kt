@@ -9,7 +9,7 @@ import com.example.controlefluxo.model.PessoaModel
 import com.example.controlefluxo.repositorio.PessoaRepositorio
 
 class PessoaFormularioViewModel(application: Application) : AndroidViewModel(application) {
-    private val repositorio = PessoaRepositorio.getInstance(application)
+    private val repositorio = PessoaRepositorio(application)
 
     private val pessoaModel = MutableLiveData<PessoaModel>()
     val pessoa: LiveData<PessoaModel> = pessoaModel
