@@ -27,7 +27,6 @@ class PessoaRepositorio private constructor(context: Context) {
         return try {
             val db = pessoaDataBase.writableDatabase
             val situacao = if (pessoa.situacao) 1 else 0
-
             val values = ContentValues()
             values.put(DataBaseConstants.PESSOA.COLUNAS.NOME, pessoa.nome)
             values.put(DataBaseConstants.PESSOA.COLUNAS.SITUACAO, situacao)
@@ -37,9 +36,7 @@ class PessoaRepositorio private constructor(context: Context) {
 
         } catch (e: Exception) {
             false
-
         }
-
     }
 
     fun atualizar(pessoa: PessoaModel): Boolean {
@@ -58,7 +55,6 @@ class PessoaRepositorio private constructor(context: Context) {
             true
         } catch (e: Exception) {
             false
-
         }
 
     }
@@ -66,8 +62,6 @@ class PessoaRepositorio private constructor(context: Context) {
     fun deletar(id: Int): Boolean {
         return try {
             val db = pessoaDataBase.writableDatabase
-
-
             val selection = DataBaseConstants.PESSOA.COLUNAS.ID + " = ?"
             val args = arrayOf(id.toString())
 
@@ -75,7 +69,6 @@ class PessoaRepositorio private constructor(context: Context) {
             true
         } catch (e: Exception) {
             false
-
         }
 
     }

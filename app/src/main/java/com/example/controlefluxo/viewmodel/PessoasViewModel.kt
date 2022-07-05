@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import com.example.controlefluxo.model.PessoaModel
 import com.example.controlefluxo.repositorio.PessoaRepositorio
 
-class TodasPessoasViewModel(application: Application) : AndroidViewModel(application) {
+class PessoasViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repositorio = PessoaRepositorio.getInstance(application.applicationContext)
 
@@ -16,11 +16,14 @@ class TodasPessoasViewModel(application: Application) : AndroidViewModel(applica
     val pessoas: LiveData<List<PessoaModel>> = listaPessoasTodas
 
     fun getAll() {
-        repositorio.exibirTodasPessoas()
         listaPessoasTodas.value = repositorio.exibirTodasPessoas()
-
     }
-
+    fun getAutorizados() {
+        listaPessoasTodas.value = repositorio.exibirPessoasLiberadas()
+    }
+    fun getBloqueados() {
+        listaPessoasTodas.value = repositorio.exibirPessoasBloqueadas()
+    }
     fun deletar(id: Int) {
         repositorio.deletar(id)
     }

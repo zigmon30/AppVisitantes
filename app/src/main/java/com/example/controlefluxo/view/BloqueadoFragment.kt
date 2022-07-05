@@ -1,44 +1,76 @@
 package com.example.controlefluxo.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.controlefluxo.constants.DataBaseConstants
 import com.example.controlefluxo.databinding.FragmentBloqueadoBinding
-import com.example.controlefluxo.viewmodel.BloqueadoViewModel
+import com.example.controlefluxo.view.adapter.PessoasAdapter
+import com.example.controlefluxo.view.listener.OnPessoaListener
+import com.example.controlefluxo.viewmodel.PessoasViewModel
 
 
 class BloqueadoFragment : Fragment() {
 
     private var _binding: FragmentBloqueadoBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val viewModel =
-            ViewModelProvider(this).get(BloqueadoViewModel::class.java)
+    private lateinit var viewModel: PessoasViewModel
+    private val adapter = PessoasAdapter()
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, b: Bundle?): View {
+
+        viewModel = ViewModelProvider(this).get(PessoasViewModel::class.java)
         _binding = FragmentBloqueadoBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textSlideshow
-        viewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+
+        binding.recyclePessoas.layoutManager = LinearLayoutManager(context)
+        binding.recyclePessoas.adapter = adapter
+
+        val listener = object : OnPessoaListener {
+            override fun onClick(id: Int) {
+                val intent = Intent(context, PessoaFormularioActivity::class.java)
+                val bundle = Bundle()
+
+                bundle.putInt(DataBaseConstants.PESSOA.ID, id)
+                intent.putExtras(bundle)
+                startActivity(intent)
+            }
+
+            override fun OnDelete(id: Int) {
+                viewModel.deletar(id)
+                viewModel.getBloqueados()
+
+            }
+
         }
-        return root
+
+        adapter.attachListener(listener)
+        observe()
+
+        return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getBloqueados()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun observe() {
+        viewModel.pessoas.observe(viewLifecycleOwner) {
+            adapter.atualizarPessoas(it)
+
+        }
+
     }
 }

@@ -15,9 +15,11 @@
         <entry key="app/src/main/res/layout/activity_pessoa_formulario.xml" value="0.33" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.18020833333333333" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.165625" />
+        <entry key="app/src/main/res/layout/fragment_autorizado.xml" value="0.2078125" />
+        <entry key="app/src/main/res/layout/fragment_bloqueado.xml" value="0.2078125" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.165625" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.165625" />
-        <entry key="app/src/main/res/layout/fragment_todas_pessoas.xml" value="0.165625" />
+        <entry key="app/src/main/res/layout/fragment_todas_pessoas.xml" value="0.1" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.165625" />
         <entry key="app/src/main/res/layout/row_pessoa.xml" value="0.25" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.5" />

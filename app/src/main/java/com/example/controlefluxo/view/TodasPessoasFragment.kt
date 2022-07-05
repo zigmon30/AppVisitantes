@@ -5,38 +5,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowId
-import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.controlefluxo.constants.DataBaseConstants
 import com.example.controlefluxo.databinding.FragmentTodasPessoasBinding
 import com.example.controlefluxo.view.adapter.PessoasAdapter
 import com.example.controlefluxo.view.listener.OnPessoaListener
-import com.example.controlefluxo.viewmodel.PessoaFormularioViewModel
-import com.example.controlefluxo.viewmodel.TodasPessoasViewModel
+import com.example.controlefluxo.viewmodel.PessoasViewModel
 
 class TodasPessoasFragment : Fragment() {
 
     private var _binding: FragmentTodasPessoasBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: TodasPessoasViewModel
+    private lateinit var viewModel: PessoasViewModel
     private val adapter = PessoasAdapter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, b: Bundle?): View {
-
-        viewModel = ViewModelProvider(this).get(TodasPessoasViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(PessoasViewModel::class.java)
         _binding = FragmentTodasPessoasBinding.inflate(inflater, container, false)
 
-        //layout
-        binding.recyclePessoasTodas.layoutManager = LinearLayoutManager(context)
-
-        //adapter
-        binding.recyclePessoasTodas.adapter = adapter
+        binding.recyclePessoas.layoutManager = LinearLayoutManager(context)
+        binding.recyclePessoas.adapter = adapter
 
         val listener = object : OnPessoaListener {
             override fun onClick(id: Int) {
@@ -57,9 +47,6 @@ class TodasPessoasFragment : Fragment() {
         }
 
         adapter.attachListener(listener)
-
-
-
         observe()
 
         return binding.root
